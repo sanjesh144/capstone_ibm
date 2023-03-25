@@ -3,9 +3,9 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
 # from .models import related models
-
+from .models import CarModel
 # from .restapis import related methods
-
+from .restapis import get_dealers_from_cf, get_dealer_reviews_from_cf, post_request
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from datetime import datetime
@@ -137,4 +137,3 @@ def add_review(request, dealer_id):
         URL = 'https://service.eu.apiconnect.ibmcloud.com/gws/apigateway/api/a9220b6d6b26f1eb3b657a98770b743616f7d4cd223b89cd1ca4e88ab49bdb92/api/review'
         post_request(URL, json_payload, dealerId=dealer_id)
     return redirect("djangoapp:dealer_details", dealer_id=dealer_id)
-    
